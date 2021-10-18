@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "679567428884",
+    "project_id": "mealshare-22148",
+    "storage_bucket": "mealshare-22148.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679567428884:android:6b17667e394dcc3f7cc601",
+        "android_client_info": {
+          "package_name": "com.example.mealshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679567428884-fhnb0o6fiv1v3bsj93rbjk7ujm4ofk6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbNs7uhuw4dg_6sImph9tW2agRT3MxfdA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679567428884-fhnb0o6fiv1v3bsj93rbjk7ujm4ofk6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

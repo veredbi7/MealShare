@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/shareFoodBtn"
+        android:layout_width="135dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="shareMeal"
+        android:text="@string/share_a_meal"
+        app:layout_constraintBottom_toTopOf="@+id/needDeliveryBtn"
+        app:layout_constraintEnd_toStartOf="@+id/searchMealBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Button
+        android:id="@+id/searchMealBtn"
+        android:layout_width="135dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="65dp"
+        android:onClick="searchMeal"
+        android:text="@string/search_a_meal"
+        app:layout_constraintBottom_toTopOf="@+id/wantToDeliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/shareFoodBtn"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Button
+        android:id="@+id/needDeliveryBtn"
+        android:layout_width="135dp"
+        android:layout_height="103dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="220dp"
+        android:onClick="needDelivery"
+        android:text="@string/i_need_delivery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/wantToDeliver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shareFoodBtn" />
+
+    <Button
+        android:id="@+id/wantToDeliver"
+        android:layout_width="135dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="270dp"
+        android:onClick="wantToDeliver"
+        android:text="@string/i_want_to_deliver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/needDeliveryBtn"
+        app:layout_constraintTop_toBottomOf="@+id/searchMealBtn" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="49dp"
+        android:text="@string/meal_share"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/searchMealBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

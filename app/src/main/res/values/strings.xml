@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MealShare</string>
+    <string name="share_a_meal">Share a Meal</string>
+    <string name="search_a_meal">Search a Meal</string>
+    <string name="i_need_delivery">I Need Delivery</string>
+    <string name="i_want_to_deliver">I Want to Deliver</string>
+    <string name="meal_share">Meal Share</string>
+    <string name="title_activity_map">Map</string>
+</resources>
