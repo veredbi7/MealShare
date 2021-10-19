@@ -24,6 +24,9 @@ import android.widget.Toast;
 import com.example.mealshare.FireBaseDB.CloudFireStore;
 import com.example.mealshare.FireBaseDB.FireBaseStorage;
 import com.example.mealshare.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -58,6 +61,7 @@ public class ShareMeal extends AppCompatActivity {
         image = findViewById(R.id.imageView);
         title = findViewById(R.id.post_title);
         content = findViewById(R.id.content);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         photoTaken = false;
         try {
@@ -185,7 +189,7 @@ public class ShareMeal extends AppCompatActivity {
                 this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST);
         } else {
-            locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+           /* locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
             Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (locationGPS != null) {
                 latitude = locationGPS.getLatitude();
@@ -195,9 +199,42 @@ public class ShareMeal extends AppCompatActivity {
                 address = addresses.get(0).getAddressLine(0);
             } else {
                // Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
+            }*/
+            Context context=getApplicationContext();
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
             }
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+
+                                latitude = location.getLatitude();
+                                longitude = location.getLongitude();
+
+                                List<Address> addresses = null;
+                                try {
+                                    addresses = new Geocoder(context, Locale.getDefault()).getFromLocation(latitude, longitude, 1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                address = addresses.get(0).getAddressLine(0);
+                            }
+                        }
+                    });
         }
     }
+    private FusedLocationProviderClient fusedLocationClient;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

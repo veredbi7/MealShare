@@ -2,6 +2,7 @@ package com.example.mealshare.Adapters;
 
 import android.Manifest;
 import android.app.Activity;
+
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.widget.Toast;
@@ -10,7 +11,6 @@ import androidx.annotation.NonNull;
 
 public class Permissions {
     private static final int REQUEST_CODE = 1;
-
     public static void askForPermissions(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             askForCameraPerm(activity);
